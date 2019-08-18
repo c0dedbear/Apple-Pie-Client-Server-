@@ -1,6 +1,6 @@
-# Vapor Server Side
+# Server Side (Vapor 3)
 
-This is a simple server-side App to manage and sending data for Apple Pie iOS App. Using MySQL.
+This is a simple server-side App to manage and sending data for Apple Pie iOS App. Using MySQL. Bootstrap.
 ![ScreenshotWeb](https://github.com/smokeMMA/Apple-Pie-Client-Server-/blob/master/ScreenshotWeb.png)
 
 ## Configure and Launch
