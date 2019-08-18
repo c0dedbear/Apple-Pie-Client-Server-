@@ -1,0 +1,28 @@
+#set("title") { Установка прошла успешно!}
+
+#set("meta") { http-equiv="refresh" content="5;URL=/login"}
+
+
+#set("body") {
+<div class="text-center">
+<h5 align="center">Тестовые данные успешно загружены!</h5>
+<div class="alert alert-success" role="alert" style="width:500px; margin:auto;">
+Логин и пароль для входа admin:admin !
+</div>
+<br>
+<br>
+<font class="text-muted">Перенаправление на страницу входа</font>
+<br>
+<div class="spinner-border spinner-border-sm" role="status">
+<span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow spinner-grow-sm" role="status">
+<span class="sr-only">Loading...</span>
+</div>
+</div>
+<br>
+<p class="text-center">Если страница не обновилась нажмите <a href="/login">сюда</a>.</p>
+
+}
+
+#embed("master")

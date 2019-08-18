@@ -1,0 +1,62 @@
+#set("title") { Пользователи}
+#set("userListActive"){active}
+#set("body") {
+  <div class="container px-lg-5">
+    <div class="row mx-lg-n5">
+      <div class="col py-3 px-lg-5 border bg-light shadow-sm rounded" style="padding:auto; text-align:center"><h5 style="padding:auto; text-align:center; margin-top:25px;">Зарегистрированные пользователи:</h5></div>
+      <div class="col py-3 px-lg-5 border bg-light shadow-sm rounded" align="center">
+        <p class="text-muted"><font size="2"> В базе данных #count(users) пользователей.</font></p>
+      <a class="btn btn-outline-primary text-decoration-none"  class="" role="button" href="users/create">Добавить нового пользователя</a>
+      </div>
+    </div>
+  </div>
+  <br>
+
+#if(users) {
+  <div class="shadow-sm rounded">
+  <table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col" style="text-align:center;">id</th>
+      <th scope="col" style="text-align:center;">Логин</th>
+      <th scope="col" style="text-align:center;">Email</th>
+      <th scope="col" style="text-align:center;">Создан</th>
+      <th scope="col" style="text-align:center;"><font class="text-muted" style="">Операции</font></th>
+    </tr>
+  </thead>
+  <tbody>
+    #for(user in users) {
+    <tr>
+   <th scope="row">
+     <input style="text-align:center;" type="text" class="form-control" value="#(user.id)" disabled>
+   </th>
+      <td>
+        <form id="#(user.id)" method="post" action="/users/#(user.id)/update">
+        <input form="#(user.id)" style="text-align:center;" type="text" class="form-control" name="username" value="#(user.username)" required>
+        </form>
+      </td>
+      <td>
+      <form id="#(user.id)" method="post" action="/users/#(user.id)/update">
+      <input form="#(user.id)" style="text-align:center;" type="email" class="form-control" name="email" value="#(user.email)" required>
+      </form>
+      </td>
+      <td>
+         <input style="text-align:center;" type="text" class="form-control" value="#date(user.createdAt,"dd.MM.y в HH:MM")" disabled>
+      </td>
+      <td style="width:100px;float:center;">
+      <form id="delete" method="post">
+      <input form="#(user.id)" type="submit" value="Изменить" class="btn btn-outline-warning btn-sm">
+      <input style="margin-top:5px;" form="delete" type="submit" value="Удалить" class="btn btn-outline-danger btn-sm" formaction="/users/#(user.id)/delete">
+      </form>
+</td>
+    </tr>
+  }
+
+  </tbody>
+</table>
+</div>
+}
+
+}
+
+#embed("master")

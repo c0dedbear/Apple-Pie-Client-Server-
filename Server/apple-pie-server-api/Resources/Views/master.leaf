@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta #get(meta)>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>#get(title)</title>
+
+
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!-- Sticky footer styles -->
+<link rel="stylesheet" type="text/css" href="../../../stickyfooter.css">
+
+<style>
+body {
+padding-top: 5rem;
+}
+</style>
+</head>
+
+<body class="d-flex flex-column h-100">
+    <!-- Begin page content -->
+
+<header>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
+<a class="navbar-brand" href="/main"><img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/apple-tree-720375.png" width="32" height="32" class="d-inline-block align-top" alt="image"><font style="margin-left:10px;">Apple Pie Words</font></a><span class="badge badge-secondary">API</span>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+#if(showHidingBlock) {
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link #get(activeDocPage)" href="/main">Документация<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link #get(userListActive)" href="/users">Пользователи</a>
+      <a class="nav-item nav-link #get(categoriesActive)" href="/categories">Слова и Категории</a>
+    </div>
+  </div>
+  <div class="media" align="right">
+<div class="media-body">
+  <img src="https://img.icons8.com/windows/32/000000/exit.png">
+<a href="/logout"><span class="text-muted"><font size="3">Выйти</font></span></a>
+</div>
+
+}
+</nav>
+</header>
+</div>
+<main class="container" role="main">
+#get(body)
+</main>
+
+
+
+
+
+<footer class="footer">
+<div class="container" align="center" >
+<span class="text-muted">Copyright Mikhail Medvedev &copy; 2019</span>
+</div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

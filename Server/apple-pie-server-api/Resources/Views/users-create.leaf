@@ -1,0 +1,42 @@
+#set("title") { Создание нового пользователя }
+#set("usercreateActive") {active}
+#set("body") {
+
+<h1 align="center">Создать нового пользователя</h1>
+<br>
+#if(error) {
+<div align="center"><font size="1pt" color="red">Регистрация невозможна. Пользователь с такими данными уже существует!</font></div>
+}
+<form method="post" id="regForm" autocomplete="on">
+<div class="form-group">
+<label>E-mail</label>
+<input type="email" name="email" class="form-control" placeholder="E-mail" maxlength=68 value=#if(userNameDuplicate){
+"#(userEmail)"
+}else {
+  ""
+} required>
+#if(emailDuplicate) {
+<div><font size="1pt" color="red">Пользователь с адресом #(userEmail) уже существует</font></div>
+}
+</div>
+
+<div class="form-group">
+<label>Логин</label>
+<input type="text" maxlength=16 name="username" class="form-control" placeholder="Имя пользователя" value=#if(emailDuplicate){
+"#(userName)"
+}else {
+  ""
+} required>
+#if(userNameDuplicate) {
+<div><font size="1pt" color="red">Пользователь с логином #(userName) уже существует</font></div>
+}
+</div>
+<div class="form-group">
+<label>Пароль</label>
+<input type="password" name="password" maxlength=24 class="form-control" placeholder="Введите пароль" required>
+</div>
+<button type="submit" class="btn btn-primary">Создать</button>
+</form>
+}
+
+#embed("master")

@@ -1,0 +1,31 @@
+#set("title") { Вход в систему}
+#set("body") {
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+    </div>
+  </div>
+  <div class="media">
+  <div align="center" class="media-body">
+  <img src="https://img.icons8.com/ios-glyphs/35/000000/login-rounded-right.png">
+<h3>Вход</h3>
+  </div>
+  </div>
+<br>
+#if(error) {
+<div align="center"><font size="1pt" color="red">Неверный логин или пароль</font></div>
+}
+<form method="post" id="loginForm" autocomplete="on">
+<div class="form-group">
+<label>Логин</label>
+<input type="text" maxlength=16 name="username" class="form-control" placeholder="Логин" required>
+<br>
+<div class="form-group">
+<label>Пароль</label>
+<input type="password" name="password" maxlength=24 class="form-control" placeholder="Введите пароль" required>
+</div>
+<button type="submit" class="btn btn-primary">Войти</button>
+</form>
+}
+
+#embed("master")

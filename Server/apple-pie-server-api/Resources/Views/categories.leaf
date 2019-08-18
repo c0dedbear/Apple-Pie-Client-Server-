@@ -1,0 +1,94 @@
+#set("title") {Категории}
+#set("categoriesActive"){active}
+#set("showHidingBlock"){true}
+#set("body") {
+<h2 align="center">Категории:</h2>
+<br>
+<div class-"container" style="width:550px;float:left;">
+<ul class="list-group shadow-sm rounded">
+#for(categoryView in categoryViewList) {
+  <!-- Modal for deleting -->
+  <div class="modal fade" id="warningModal#(categoryView.category.id)" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <form id="delete" method="post"></form>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Вы действительно хотите удалить категорию?</h5>
+          <button type="button" class="btn btn-outline-dark btn-sm" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-danger" role="alert">Вместе с категорией также будут удалены все слова, которые в ней находятся.</div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" data-dismiss="modal" style="float:right;" class="btn btn-outline-dark btn-sm">Отмена</a>
+            <input form="delete" type="submit" value="Удалить" class="btn btn-outline-danger btn-sm" formaction="/category/#(categoryView.category.id)/delete">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!---->
+  <!-- Modal for updating -->
+  <div class="modal fade" id="updateModal#(categoryView.category.id)" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Изменить</h5>
+          <button type="button" class="btn btn-outline-dark btn-sm" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="update#(categoryView.category.id)" method="post">
+<input form="update#(categoryView.category.id)" name="name" style="text-align:center;" type="text" class="form-control" value="#(categoryView.category.name)" required>
+  </form>
+        </div>
+        <div class="modal-footer">
+          <a href="#" data-dismiss="modal" style="float:right;" class="btn btn-outline-dark btn-sm">Отмена</a>
+            <input form="update#(categoryView.category.id)" type="submit" value="Изменить" class="btn btn-outline-primary btn-sm" formaction="/category/#(categoryView.category.id)/update">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!---->
+  <li class="list-group-item list-group-item-action">
+    #if(categoryViewList.count != 0) {
+  <a href="/category/#(categoryView.category.id)"> #(categoryView.category.name)</a>
+    <span class="badge badge-primary badge-pill">#count(categoryView.words)</span>
+      <button style="float:right;" type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#warningModal#(categoryView.category.id)"> Удалить</button>
+        <button style="float:right;margin-right:10px" type="button" class="btn btn-outline-warning btn-sm" data-toggle="modal" data-target="#updateModal#(categoryView.category.id)">Изменить</button>
+
+
+    <p class="text-muted font-weight-light" style="font-size:11pt;">Создана пользователем <b>#(categoryView.category.user)</b> #date(categoryView.category.date, "dd.MM.y в HH:MM")</p>
+      <!-- Button trigger modal -->
+  </li>
+} else {
+  <li class="list-group-item list-group-item-action"> Нет категорий </li>
+}
+}
+</ul>
+</div>
+
+
+<div class-"container" style="width:450px;float:right;">
+
+<div class="alert alert-primary" role="alert">
+Перейдите в категорию чтобы управлять словами.
+</div>
+<div class="form-group">
+<form method="post">
+<label for="formGroupExampleInput">Добавить новую категорию</label>
+<input id="submit" name="name" type="text" class="form-control" id="formGroupExampleInput" placeholder="введите имя категории" required>
+</div>
+<button type="submit" class="btn btn-outline-primary text-decoration-none">Добавить</button>
+</form>
+
+</div>
+
+
+
+}
+
+#embed("master")

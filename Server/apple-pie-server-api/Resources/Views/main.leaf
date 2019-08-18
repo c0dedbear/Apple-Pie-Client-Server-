@@ -1,0 +1,62 @@
+#set("title") { Документация }
+#set("activeDocPage"){active}
+#set("usersCreate"){true}
+#set("body") {
+<div class="jumbotron shadow p-3 rounded" style="width:400px;float:right;">
+    <div class="media">
+  <img src="https://img.icons8.com/ios/50/000000/user.png" class="mr-3" alt="...">
+  <div class="media-body">
+<h6 class="mt-0">Здравствуйте, #(username)!</h6>
+    <span class="text-muted"><font size="2">Сегодня #date(date,"dd.MM.y")</font></span>
+  </div>
+</div>
+</div>
+<br>
+<h5 class="text-muted">  Документация (ver. 1.0.0) </h6>
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#mobile" aria-expanded="false" aria-controls="mobile">
+  Мобильное приложение
+</button>
+<button class="btn btn-info" type="button" data-toggle="collapse" data-target="#web" aria-expanded="false" aria-controls="web">
+Web (Leaf)
+</button>
+<div class="collapse show shadow p-3 rounded alert-primary" id="mobile" style="margin-top:10px">
+  <h3 style="text-align:center">Мобильное приложение</h3>
+  <div class="alert alert-primary" style="text-align:center" role="alert">
+  Авторизация для мобильного приложения не требуется.
+</div>
+    <h2>Категории</h2>
+  <blockquote class="blockquote">
+  <p class="mb-0"> <b>GET:</b> /api/categories</p>
+  <footer class="blockquote-footer"><cite title="Source Title">Возвращает JSON со списком категорий;</cite>
+  </footer>
+  </blockquote>
+  <br>
+  <h2>Слова</h2>
+  <blockquote class="blockquote">
+  <p class="mb-0"><b>GET:</b> /api/category/id/words</p>
+  <footer class="blockquote-footer"><cite title="Source Title">Возвращает JSON со всеми словами из категории, id - идентификатор категории;</cite></footer>
+  </blockquote>
+
+
+</div>
+
+<div class="collapse shadow p-3 rounded alert-info" id="web" style="margin-top:20px;margin-bottom:30px;">
+  <h3 style="text-align:center">Web интерфейс</h3>
+  <div class="alert alert-info" style="text-align:center" role="alert">
+  Для использования требуется войти в систему на странице /login.
+</div>
+    <h2>Категории</h2>
+    <blockquote class="blockquote">
+    <p class="mb-0"> <b>GET:</b> /categories</p>
+    <footer class="blockquote-footer"><cite title="Source Title">Страница для управления категориями и словами. Позволяет редактировать и добавлять категории и слова.</cite></footer>
+    </blockquote>
+    <br>
+    <h2>Пользователи</h2>
+    <blockquote class="blockquote">
+    <p class="mb-0"><b>GET:</b> /users</p>
+    <footer class="blockquote-footer"><cite title="Source Title">Страница для управления пользователями, позволяет добавлять/изменять/удалять пользователей. Если вы удалите свой аккаунт вы автоматически выйдите из системы и больше не сможете зайти.</cite></footer>
+    </blockquote>
+</div>
+
+}
+#embed("master")

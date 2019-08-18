@@ -1,0 +1,21 @@
+#set("title") { Пользователь успешно зарегистрирован!}
+
+#set("meta") { http-equiv="refresh" content="3;URL=/users"}
+
+
+#set("body") {
+<div class="text-center">
+<h5 align="center">Пользователь <div class="text-info">#(username)</div> успешно зарегистрирован!</h5>
+<div class="spinner-border spinner-border-sm" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow spinner-grow-sm" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+</div>
+<br>
+<p class="text-center">Если страница не обновилась нажмите <a href="/users">сюда</a>.</p>
+
+}
+
+#embed("master")

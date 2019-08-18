@@ -1,0 +1,77 @@
+#set("title") { Пользователи}
+#set("categoriesActive"){active}
+#set("showHidingBlock"){true}
+#set("body") {
+  <div class="container px-lg-5">
+    <div class="row mx-lg-n5">
+      <div class="col py-3 px-lg-5 border bg-light shadow-sm rounded" style="padding:auto; text-align:center">
+<a href="/categories" class="badge badge-light text-muted" style="float:left;"><<Назад</a>
+        <h5 style="text-align:center; margin-top:20px;"><span class="badge badge-secondary" style="margin-left:5px"> ID: #(category.id)</span> "#(category.name)"</h5>
+        <p class="text-muted"><font size="2"> В категории #count(words) слов.</font></p>
+      </div>
+      <div class="col py-3 px-lg-5 border bg-light shadow-sm rounded" align="center">
+        #if(error) {
+        <div align="center"><font size="1pt" color="red">Такое слово уже есть в данной категории!</font></div>
+        }
+        <div class="form-group">
+        <form method="post" action="/category/#(category.id)/addword">
+        <input type="hidden" name="categoryId" value="#(category.id)" class="form-control" id="formGroupExampleInput">
+        <input id="submit" name="value" type="text" class="form-control" id="formGroupExampleInput" placeholder="Добавить новое слово">
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить</button>
+        </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+#if(words) {
+  <div class="shadow-sm rounded">
+  <table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col" style="text-align:center;">ID</th>
+      <th scope="col" style="text-align:center;">Слово</th>
+      <th scope="col" style="text-align:center;">Добавлено</th>
+      <th scope="col" style="text-align:center;">Дата</th>
+      <th scope="col" style="text-align:center;"><font class="text-muted" style="">Операции</font></th>
+    </tr>
+  </thead>
+  <tbody>
+    #for(word in words) {
+    <tr>
+   <th scope="row">
+     <input style="text-align:center;" type="text" class="form-control" value="#(word.id)" disabled>
+   </th>
+      <td>
+        <form id="#(word.id)" method="post" action="/word/#(word.id)/update">
+        <input form="#(word.id)" style="text-align:center;" type="hidden" class="form-control" name="categoryId" value="#(word.categoryId)">
+        <input form="#(word.id)" style="text-align:center;" type="text" class="form-control" name="value" value="#(word.value)" required>
+      
+        </form>
+      </td>
+      <td>
+      <input style="text-align:center;" type="email" class="form-control" name="user" value="#(word.user)" disabled>
+      </td>
+      <td>
+         <input style="text-align:center;" type="text" class="form-control" value="#date(word.date,"dd.MM.y в HH:MM")" disabled>
+      </td>
+      <td style="width:100px;float:center;">
+      <form id="delete" method="post">
+      <input form="#(word.id)" type="submit" value="Изменить" class="btn btn-outline-warning btn-sm">
+      <input style="margin-top:5px;" form="delete" type="submit" value="Удалить" class="btn btn-outline-danger btn-sm" formaction="/word/#(word.id)/delete">
+      </form>
+</td>
+    </tr>
+  }
+
+  </tbody>
+</table>
+</div>
+}
+
+}
+
+#embed("master")
