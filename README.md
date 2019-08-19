@@ -15,8 +15,9 @@ This is a simple server-side App to manage and sending data for Apple Pie iOS Ap
 
 # Apple-Pie Client 
 Modified from https://github.com/dbystruev/Apple-Pie.git
--Added Networking to fetched Categories from Server.
--Added Settings Screen to change Categories.
+
+1. Added Networking to fetched Categories from Server.
+2. Added Settings Screen to change Categories.
 
 Apple Pie education project from Apple [App Development with Swift](https://itunes.apple.com/ru/book/app-development-with-swift/id1219117996?l=en&mt=11) curriculum.
 
